@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend work is here",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harshit2929/WorkItOffline.git"
+  },
+  "author": "harshit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harshit2929/WorkItOffline/issues"
+  },
+  "homepage": "https://github.com/Harshit2929/WorkItOffline#readme"
+}
