@@ -9,11 +9,16 @@ const db = mysql.createConnection({
   }); 
     
   db.connect( (err) =>{
-    if(!err){
-      console.log('database connected')
-    } 
-    else{
-      throw err
+    try{
+      if(!err){
+        console.log('database connected')
+      } 
+      else{
+        throw err
+      }
+    }catch(error){
+      console.log("EXCEPTION OCCURED")
+      console.log(error)
     }
   })
 
