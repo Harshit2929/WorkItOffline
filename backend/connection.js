@@ -1,10 +1,11 @@
 const mysql=require('mysql')
 
 const db = mysql.createConnection({
-    host     : 'localhost',
+    host     : 'postgresdb',
     user     : 'root', 
-    password : process.env.DATABSE_PASSWORD,
-    database : 'server_database'
+    password : 'googleuser',
+    database : 'server',
+    port: 5432
   }); 
     
   db.connect( (err) =>{
