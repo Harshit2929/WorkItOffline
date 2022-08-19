@@ -33,7 +33,7 @@ TransactionID int NOT NULL,
 Amount int,
 Timestamp varchar(255) NOT NULL,
 UID int,
-SHG int,
+SHGID int,
  FOREIGN KEY (UID) REFERENCES USERS(UID),
 FOREIGN KEY (SHGID) REFERENCES SHG(SHGID),
 PRIMARY KEY(TransactionID)
