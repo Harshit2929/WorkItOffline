@@ -1,25 +1,24 @@
-const mysql=require('mysql')
+const { Sequelize, Model, DataTypes } = require('sequelize')
+require("dotenv").config();
 
-// const db = mysql.createConnection({
-//     host     : 'postgresdb',
-//     user     : 'root', 
-//     password : 'googleuser',
-//     database : 'server',
-//     port: 5432
-//   }); 
-    
-  // db.connect( (err) =>{
-  //   try{
-  //     if(!err){
-  //       console.log('database connected')
-  //     } 
-  //     else{
-  //       throw err
-  //     }
-  //   }catch(error){
-  //     console.log("EXCEPTION OCCURED")
-  //     console.log(error)
-  //   }
-  // })
+const options = {
+  host: 'localhost',
+  port: 5432,
+  dialect: 'postgres',
+  logging: false
+  // logging: console.log,
+  // force: process.env.DB_FORCE_RESTART
+}
 
-  module.exports={}
+const connection = new Sequelize( 'postgres://postgres:googleuser@localhost:5432/postgres', options);
+
+(async () => {
+  try {
+    await connection.sync();
+    console.log('Database connected');
+  } catch (error) {
+    throw new Error(error);
+  }
+})();
+
+module.exports = connection;
