@@ -2,7 +2,7 @@ const { Sequelize, Model, DataTypes } = require('sequelize')
 require("dotenv").config();
 
 const options = {
-  host: 'localhost',
+  host: 'postgresdb',
   port: 5432,
   dialect: 'postgres',
   logging: false
