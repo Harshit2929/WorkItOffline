@@ -2,7 +2,7 @@ const { Sequelize, Model, DataTypes } = require('sequelize')
 require("dotenv").config();
 
 const options = {
-  host: 'localhost',
+  host: 'postgresdb',
   port: 5432,
   dialect: 'postgres',
   logging: false
@@ -10,7 +10,7 @@ const options = {
   // force: process.env.DB_FORCE_RESTART
 }
 
-const connection = new Sequelize( 'postgres://postgres:googleuser1@localhost:5432/postgres', options);
+const connection = new Sequelize( 'postgres://postgres:postgres1@'+options.host+':5432/postgres', options);
 
 (async () => {
   try {
