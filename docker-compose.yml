@@ -12,16 +12,17 @@ services:
       SERVER_NAME: mainserver
 
   postgresdb:
-    image: postgres:12.12
+    build: postgresdb/
     restart: always
     environment:
-      - POSTGRES_USER: postgres
-      - POSTGRES_PASSWORD: postgres
-      - POSTGRES_DB: postgres 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres 
     ports:
       - 5432:5432
     volumes: 
-      - postgresdb: /var/lib/postgresql/data
+      - ./postgresdb_data:/var/lib/postgresql/data
+      - ./postgresdb/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   postgresdb:
