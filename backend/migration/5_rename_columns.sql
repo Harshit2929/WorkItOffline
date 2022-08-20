@@ -8,9 +8,8 @@ ALTER TABLE MEETINGS
     RENAME COLUMN MeetingTime TO meeting_time,
     RENAME COLUMN IsPresent TO is_present
 ALTER TABLE TRANSACTIONS
-    RENAME COLUMN TransactionId TO transaction_id
+    RENAME COLUMN TransactionID TO transaction_id
 ALTER TABLE USERS
-    RENAME COLUMN TransactionID TO trnsaction_id,
     RENAME COLUMN FirstName TO first_name,
     RENAME COLUMN LastName TO last_name,
     RENAME COLUMN MiddleName TO middle_name,
