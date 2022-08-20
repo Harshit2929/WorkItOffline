@@ -35,3 +35,32 @@ CREATE TABLE TRANSACTIONS(
     FOREIGN KEY (SHGID) REFERENCES SHG(SHGID),
     PRIMARY KEY(TransactionID)
 );
+ALTER TABLE USERS
+ADD COLUMN SHGID INT;
+ALTER TABLE USERS
+ADD FOREIGN KEY(SHGID) REFERENCES SHG(SHGID);
+ALTER TABLE USERS
+ADD PhoneNumber varchar(255);
+ALTER TABLE SHG
+ADD PhoneNumber varchar(255);
+ALTER TABLE SHG
+ADD first_name varchar (255),
+    ADD last_name varchar (255),
+    ADD middle_name varchar(255)
+ALTER TABLE SHG
+    RENAME COLUMN TotalAmount TO total_amount,
+    RENAME COLUMN PhoneNumber TO phone_number
+ALTER TABLE MEETINGS
+    RENAME COLUMN MeetingID TO meeting_id,
+    RENAME COLUMN MeetingDate TO meeting_date,
+    RENAME COLUMN MeetingTime TO meeting_time,
+    RENAME COLUMN IsPresent TO is_present
+ALTER TABLE TRANSACTIONS
+    RENAME COLUMN TransactionID TO transaction_id
+ALTER TABLE USERS
+    RENAME COLUMN FirstName TO first_name,
+    RENAME COLUMN LastName TO last_name,
+    RENAME COLUMN MiddleName TO middle_name,
+    RENAME COLUMN IsAdmin TO is_admin,
+    RENAME COLUMN AmountDue TO amount_due,
+    RENAME COLUMN PhoneNumber TO phone_number
