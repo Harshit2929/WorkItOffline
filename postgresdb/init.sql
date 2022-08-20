@@ -8,33 +8,33 @@ PRIMARY KEY( UID ),
 IsAdmin bool
 );
 -- USE server_database;
-CREATE TABLE SHG( 
-SHGID int NOT NULL,
+CREATE TABLE SHGS( 
+shg_id int NOT NULL,
 Name varchar (255) NOT NULL,
-TotalAmount int,
+total_amount int,
 UID int,
-PRIMARY KEY(SHGID),
+PRIMARY KEY(shg_id),
 FOREIGN KEY (UID) REFERENCES USERS(UID)
 );
 
 
 CREATE TABLE MEETINGS(
-MeetingID int NOT NULL,
+meeting_id int NOT NULL,
 UID int NOT NULL,
-MeetingDate varchar (255) NOT NULL,
-MeetingTime varchar (255) NOT NULL,
-IsPresent bool,
-PRIMARY KEY(MeetingID),
+meeting_date varchar (255) NOT NULL,
+meeting_time varchar (255) NOT NULL,
+is_present bool,
+PRIMARY KEY(meeting_id),
 FOREIGN KEY (UID) REFERENCES USERS(UID)
 ); 
 
 CREATE TABLE TRANSACTIONS(
-TransactionID int NOT NULL,
+transaction_id int NOT NULL,
 Amount int,
-Timestamp varchar(255) NOT NULL,
+time_stamp varchar(255) NOT NULL,
 UID int,
-SHGID int,
+shg_id int,
  FOREIGN KEY (UID) REFERENCES USERS(UID),
-FOREIGN KEY (SHGID) REFERENCES SHG(SHGID),
-PRIMARY KEY(TransactionID)
+FOREIGN KEY (shg_id) REFERENCES SHG(shg_id),
+PRIMARY KEY(transaction_id)
 );
