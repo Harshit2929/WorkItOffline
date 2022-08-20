@@ -3,6 +3,8 @@ services:
   web:
     image: pushpendrahpx/workitoffline
     build: backend/
+    depends_on: 
+      - postgresdb
     command: node app.js
     ports:
       - "3000:3000"
@@ -10,15 +12,16 @@ services:
       SERVER_NAME: mainserver
 
   postgresdb:
-    image: postgres
+    image: postgres:12.12
     restart: always
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=googleuser
+      - POSTGRES_USER: postgres
+      - POSTGRES_PASSWORD: postgres
+      - POSTGRES_DB: postgres 
     ports:
       - 5432:5432
     volumes: 
-      - postgresdb:/var/lib/postgresql/data
+      - postgresdb: /var/lib/postgresql/data
 
 volumes:
   postgresdb:
