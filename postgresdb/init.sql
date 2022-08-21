@@ -10,21 +10,29 @@ CREATE TABLE USERS(
 );
 -- USE server_database;
 CREATE TABLE SHG(
-    SHGID int NOT NULL,
-    Name varchar (255) NOT NULL,
-    TotalAmount int,
+    shg_id int NOT NULL,
+    name varchar (255) NOT NULL,
+    total_amount int,
     UID int,
-    PRIMARY KEY(SHGID),
+    PRIMARY KEY(shg_id),
     FOREIGN KEY (UID) REFERENCES USERS(UID)
 );
-CREATE TABLE MEETINGS(
+-- uid and meeting _id are the composte key for the MEETING_USER table
+CREATE TABLE MEETING_USER(
     meeting_id int NOT NULL,
     UID int NOT NULL,
+    is_present bool,
+    FOREIGN KEY (meeting_id) REFERENCES MEETINGS(meeting_id),
+    FOREIGN KEY (UID) REFERENCES USERS(UID),
+    PRIMARY KEY(meeting_id, UID)
+);
+CREATE TABLE MEETINGS(
+    meeeting_id int,
+    shg_id int,
     meeting_date varchar (255) NOT NULL,
     meeting_time varchar (255) NOT NULL,
-    is_present bool,
     PRIMARY KEY(meeting_id),
-    FOREIGN KEY (UID) REFERENCES USERS(UID)
+    FOREIGN KEY (shg_id) REFERENCES SHG(shg_id),
 );
 CREATE TABLE TRANSACTIONS(
     transaction_id int NOT NULL,
