@@ -32,6 +32,9 @@ module.exports =(sequelize,datatype) =>{
   ,is_admin:{
     type:datatype.BOOLEAN,
     allowNull:false
+  },shg_id:{
+    type:datatype.INTEGER,
+    allowNull:false
   }
 }, {
   // Other model options go here

@@ -11,10 +11,6 @@ module.exports = (sequelize, datatype) =>
   },
   meeting_time: {
     type: datatype.TIME,
-  }, 
-  is_present: {
-    type: datatype.BOOLEAN,
-    defaultValue: false
   }
 }, {
   // Other model options go here
