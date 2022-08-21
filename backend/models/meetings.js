@@ -1,19 +1,19 @@
-module.exports = (sequelize, type) =>
+module.exports = (sequelize, datatype) =>
 { return sequelize.define('Meeting', {
   // Model attributes are defined here
   meeting_id: {
-    type: sequelize.INTEGER,
+    type: datatype.INTEGER,
     autoIncrement: true,
     primaryKey: true
   },
   meeting_date: {
-    type: sequelize.DATEONLY,
+    type: datatype.DATEONLY,
   },
   meeting_time: {
-    type: sequelize.TIME,
+    type: datatype.TIME,
   }, 
   is_present: {
-    type: sequelize.BOOLEAN,
+    type: datatype.BOOLEAN,
     defaultValue: false
   }
 }, {

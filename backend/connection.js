@@ -1,3 +1,4 @@
+const sequelize = require('sequelize');
 const { Sequelize, Model, DataTypes } = require('sequelize')
 require("dotenv").config();
 
@@ -10,14 +11,15 @@ const options = {
   // force: process.env.DB_FORCE_RESTART
 }
 
-const connection = new Sequelize( 'postgres://postgres:postgres1@'+options.host+':5432/postgres', options);
+const connection = new Sequelize( 'postgres://postgres:googleuser@'+options.host+':5432/postgres', options);
 
 (async () => {
   try {
     await connection.sync();
     console.log('Database connected');
   } catch (error) {
-    throw new Error(error);
+    // throw new Error(error);
+    console.log(error)
   }
 })();
 

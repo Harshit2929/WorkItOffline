@@ -1,16 +1,38 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const { DataTypes } = require("sequelize/types");
 
-const User = sequelize.define('User', {
-  // Model attributes are defined here
-  firstName: {
-    type: DataTypes.STRING,
+module.exports =(sequelize,datatype) =>{ 
+  return sequelize.define('User', {
+  // Model attributes
+  uid: {
+    type: datatype.INTEGER,
+    allowNull:false,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  first_name: {
+    type: datatype.STRING,
     allowNull: false
   },
-  lastName: {
-    type: DataTypes.STRING
-    // allowNull defaults to true
+  middle_name:{
+    type:datatype.STRING,
+    allowNull:true,
+  }
+  ,last_name: {
+    type: datatype.STRING,
+    allowNull:false
+  },
+  amount_due: {
+    type: datatype.INTEGER,
+    allowNull:true
+  }
+  ,phone_number: {
+    type: datatype.BIGINT,
+    allowNull:false
+  }
+  ,is_admin:{
+    type:datatype.BOOLEAN,
+    allowNull:false
   }
 }, {
   // Other model options go here
-});
+})};
