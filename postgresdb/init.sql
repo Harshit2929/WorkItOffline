@@ -1,11 +1,12 @@
 CREATE TABLE USERS(
     UID int NOT NULL,
-    FirstName varchar (255) NOT NULL,
-    MiddleName varchar(255),
-    LastName varchar (255) NOT NULL,
-    AmountDue int,
+    first_name varchar (255) NOT NULL,
+    middle_name varchar(255),
+    last_name varchar (255) NOT NULL,
+    amount_due int,
+    phone_number varchar(255),
     PRIMARY KEY(UID),
-    IsAdmin bool
+    is_admin bool
 );
 -- USE server_database;
 CREATE TABLE SHG(
