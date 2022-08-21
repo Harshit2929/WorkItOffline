@@ -1,16 +1,19 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
-
-const SHG = sequelize.define('SHG', {
+module.exports = (sequelize, type) =>
+{ return sequelize.define('SHG', {
   // Model attributes are defined here
-  firstName: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  lastName: {
-    type: DataTypes.STRING
-    // allowNull defaults to true
+  shg_id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  total_amount: {
+    type: Sequelize.INTEGER,
   }
 }, {
   // Other model options go here
-});
+})
+};
