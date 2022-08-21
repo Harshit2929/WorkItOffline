@@ -16,7 +16,7 @@ User.belongsTo(Shg,{targetKey:'shg_id',foreignKey:'shg_id'})
 
 //many to many relationship between  Meeting and User
 Meeting.hasMany(User,{sourceKey:'meeting_id',foreignKey:'meeting_id'})
-User.hasMany(Meeting,{sourceKey:'meeting_id',foreignKey:'meeting_id'})
+User.hasMany(Meeting,{sourceKey:'uid',foreignKey:'uid'})
 
 // one to many relationship between  user and transaction
 Transaction.belongsTo(User,{targetKey:'uid',foreignKey:'uid'})
@@ -25,3 +25,16 @@ User.hasMany(Transaction,{sourceKey:'uid',foreignKey:'uid'})
 //one to many relationship between  shg and transaction
 Transaction.belongsTo(Shg,{targetKey:'shg_id',foreignKey:'shg_id'})
 Shg.hasMany(Transaction,{sourceKey:'shg_id',foreignKey:'shg_id'})
+
+
+sequelize.sync({ force: true })
+  .then(() => {
+    console.log(`Database & tables created!`)
+  })
+
+  module.exports = {
+    User,
+    Meeting,
+    Shg,
+    Transaction
+  }
