@@ -13,8 +13,9 @@ let s = async () =>{
         await connection.authenticate();
         console.log('Connection has been established successfully.');
 
+         
 
-        await connection.sync({force:true}).then(()=>{
+        await connection.sync().then(()=>{
             console.log("TABLE ADDED")
         })
       } catch (error) {
