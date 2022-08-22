@@ -6,16 +6,16 @@ CREATE TABLE USERS(
     amount_due int,
     phone_number varchar(255),
     PRIMARY KEY(UID),
-    is_admin bool
+    is_admin bool,
+    shg_id int,
+    FOREIGN KEY (shg_id) REFERENCES USERS(shg_id)
 );
 -- USE server_database;
 CREATE TABLE SHG(
     shg_id int NOT NULL,
     name varchar (255) NOT NULL,
     total_amount int,
-    UID int,
     PRIMARY KEY(shg_id),
-    FOREIGN KEY (UID) REFERENCES USERS(UID)
 );
 -- uid and meeting _id are the composte key for the MEETING_USER table
 CREATE TABLE MEETING_USER(
@@ -28,11 +28,9 @@ CREATE TABLE MEETING_USER(
 );
 CREATE TABLE MEETINGS(
     meeeting_id int,
-    shg_id int,
     meeting_date varchar (255) NOT NULL,
     meeting_time varchar (255) NOT NULL,
     PRIMARY KEY(meeting_id),
-    FOREIGN KEY (shg_id) REFERENCES SHG(shg_id),
 );
 CREATE TABLE TRANSACTIONS(
     transaction_id int NOT NULL,

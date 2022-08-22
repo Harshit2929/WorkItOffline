@@ -8,6 +8,7 @@ const db=require('./connection')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const twilioRouter = require('./routes/twilio');
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/twilio',twilioRouter)
 
 
 app.listen(PORT,() =>{
