@@ -1,11 +1,15 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
+const { Sequelize, DataTypes, Model } = require('sequelize')
 let {connection} = require("./../imports")
-
+//const Shg = new require("./shg.model")(connection, DataTypes)
 const User = connection.define("users", {
-    id:{
+    uid:{
         type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+        autoincrement: true,
+        primarykey: true,
+        unique:true
+    },
+    shg_id:{
+        type: DataTypes.INTEGER,
     },
     firstName:{
         type:DataTypes.STRING,
@@ -13,8 +17,15 @@ const User = connection.define("users", {
     },
     lastName:{
         type: DataTypes.STRING
+    },
+    fatherName:{
+        type: DataTypes.STRING
+    },
+    husbandName: {
+        type: DataTypes.STRING
     }
 });
 
 
+//User.belongsTo(Shg)
 module.exports = User
