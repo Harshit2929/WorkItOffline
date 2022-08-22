@@ -20,5 +20,6 @@ const connection = new Sequelize(`${DBPROTOCOL}://${DBUSER}:${DBPASSWORD}@${DBHO
 module.exports = {
     app, 
     Sequelize,
-    connection
+    connection,
+    express
 }
