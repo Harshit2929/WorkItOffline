@@ -4,6 +4,7 @@ const UserModel = require('./models/Users.js')
 const MeetingModel = require('./models/Meetings.js')
 const ShgModel = require('./models/Shgs.js')
 const TransactionModel = require('./models/Transactions.js')
+const MeetingUsers=require('./models/MeetingUsers.js')
 
 const User=UserModel(sequelize,DataTypes)
 const Meeting=MeetingModel(sequelize,DataTypes)
@@ -15,8 +16,8 @@ Shg.hasMany(User,{sourceKey:'shg_id',foreignKey:'shg_id'})
 User.belongsTo(Shg,{targetKey:'shg_id',foreignKey:'shg_id'})
 
 //many to many relationship between  Meeting and User
-Meeting.hasMany(User,{sourceKey:'meeting_id',foreignKey:'meeting_id'})
-User.hasMany(Meeting,{sourceKey:'uid',foreignKey:'uid'})
+Meeting.belongsToMany(User,{through:MeetingUsers})
+User.belongsToMany(Meeting,{through:MeetingUsers})
 
 // one to many relationship between  user and transaction
 Transaction.belongsTo(User,{targetKey:'uid',foreignKey:'uid'})
