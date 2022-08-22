@@ -4,9 +4,20 @@ const {connection} = require("./imports")
 
 
 const UserModel = require("./models/user.model");
+const MeetingModel = require("./models/meeting.model");
+const MeetingUserModel = require("./models/meetinguser.model");
 
 
 const User = new UserModel(connection, DataTypes);
+const Meeting = new MeetingModel(connection, DataTypes);
+
+
+
+UserModel.belongsToMany(MeetingModel, {through: 'meetingusers', foreignKey: 'mmid'})
+MeetingModel.belongsToMany(UserModel, {through: 'meetingusers', foreignKey: 'uuid'})
+
+
+
 
 let s = async () =>{
     try {
@@ -15,7 +26,7 @@ let s = async () =>{
 
          
 
-        await connection.sync().then(()=>{
+        await connection.sync({force: true}).then(()=>{
             console.log("TABLE ADDED")
         })
       } catch (error) {
@@ -28,5 +39,6 @@ s()
 
 
 module.exports = {
-    User
+    User,
+    Meeting
 }

@@ -1,21 +1,18 @@
+
 const { Sequelize, DataTypes, Model } = require('sequelize');
 let {connection} = require("./../imports")
 
-const User = connection.define("users", {
-    uuid:{
+const Meetings = connection.define("meetings", {
+    mmid:{
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         unique: true
     },
-    firstName:{
-        type:DataTypes.STRING,
-        allowNull: false
-    },
-    lastName:{
+    meetingName: {
         type: DataTypes.STRING
     }
 });
 
 
-module.exports = User
+module.exports = Meetings
