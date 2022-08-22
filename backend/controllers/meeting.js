@@ -92,3 +92,32 @@ exports.delete = (req, res) => {
       }); 
 
 };
+exports.getCount=(req,res) =>{
+  // const id = req.params.uid;
+  try{
+    const id=req.params.uid;
+query1="SELECT COUNT(Meetings.meeting_id) FROM Meetings INNER JOIN MeetingUsers ON Meetings.meeting_id=MeetingUsers.meeting_id WHERE MeetingUsers.uid=? AND Meeting.meeting_date < NOW()"
+const meetingsAttended=await User.query(query1 ,{replacements: [id],type: sequelize.QueryTypes.SELECT})
+res.json(meetingsAttended)
+}
+catch(err){
+    res.status(500).send({
+        message: " error message "+err.message            
+      });
+}
+
+}
+exports.totalCount=(req,res) =>{
+  try{
+query1="SELECT COUNT(DISTINCT meeting_id) FROM Meetings"
+const totalMeetings=await User.query(query1 ,{type: sequelize.QueryTypes.SELECT})
+res.json(totalMeetings)
+  }
+  catch(err){
+    res.status(500).send({
+        message: " error message "+err.message            
+      });
+}
+
+
+}
