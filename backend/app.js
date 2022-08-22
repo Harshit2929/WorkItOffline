@@ -11,7 +11,7 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
-const PORT = 3000
+const PORT = 3001
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
