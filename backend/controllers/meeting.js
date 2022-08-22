@@ -6,88 +6,88 @@ exports.create = (req, res) => {
             message: "Content can not be empty!"
         });
     }
-const newUser=await User.create(req.body);
-res.json(newUser);
+const newmeeting=await meeting.create(req.body);
+res.json(newmeeting);
 };
-// Retrieve all users from the database.
+// Retrieve all meetings from the database.
 exports.getAll = (req, res) => {
-    User.findAll().then((data) => {
+    Meeting.findAll().then((data) => {
         res.json(data)
     })
     .catch(err =>{
         res.status(500).send({
             message:
-              err.message || "Some error occurred while retrieving users."
+              err.message || "Some error occurred while retrieving meetings."
           });
     })
 
-    res.json(users);  
+    res.json(meetings);  
 };
-// Find a single User with an id
+// Find a single meeting with an id
 exports.getOne = (req, res) => {
 const id=req.params.uid
-User.findByPk(id)
+Meeting.findByPk(id)
 .then(data => {
   if (data) {
     res.send(data);
   } else {
     res.status(404).send({
-      message: `Cannot find user with id=${id}.`
+      message: `Cannot find meeting with id=${id}.`
     });
   }
 })
 .catch(err => {
   res.status(500).send({
-    message: "Error retrieving user with id=" + id
+    message: "Error retrieving meeting with id=" + id
   });
 });
 
   
 };
-// Update a User by the id in the request
+// Update a meeting by the id in the request
 exports.update = (req, res) => {
     const id=req.params.uid
-    User.update(req.body, {
+    Meeting.update(req.body, {
         where: { uid: id }
       })
         .then(num => {
           if (num == 1) {
             res.send({
-              message: "User table was updated successfully."
+              message: "meeting table was updated successfully."
             });
           } else {
             res.send({
-              message: `Cannot update user with id=${id}. Maybe user was not found or req.body is empty!`
+              message: `Cannot update meeting with id=${id}. Maybe meeting was not found or req.body is empty!`
             });
           }
         })
         .catch(err => {
           res.status(500).send({
-            message: "Error updating user with id=" + id
+            message: "Error updating meeting with id=" + id
           });
 
         })
 };
-// Delete a user with the specified id in the request
+// Delete a meeting with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.uid;
-    User.destroy({
+    Meeting.destroy({
       where: { uid: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "User was deleted successfully!"
+            message: "meeting was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete User with id=${id}. Maybe User was not found!`
+            message: `Cannot delete meeting with id=${id}. Maybe meeting was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete User with id=" + id
+          message: "Could not delete meeting with id=" + id
         });
       }); 
 
