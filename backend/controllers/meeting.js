@@ -1,6 +1,5 @@
-const User=require('../sequelize').User
+const Meeting=require('../sequelize').Meeting
 
-// Create and Save a new user
 exports.create = (req, res) => {
     if(!req.body.title){
         res.status(400).send({
@@ -93,33 +92,3 @@ exports.delete = (req, res) => {
       }); 
 
 };
-// get all meetings of a user
-exports.getMeetings=(req,res) => {
-try{
-    const id=req.params.uid;
-query1="SELECT * FROM Users INNER JOIN MeetingUsers ON Users.uid=MeetingUsers.uid  WHERE Users.uid=?"
-const users=await User.query(query1 ,{replacements: [id],type: sequelize.QueryTypes.SELECT})
-res.json(users)
-}
-catch(err){
-    res.status(500).send({
-        message: "Error retrieving users with id=" + id+ " with error "+err.message            
-      });
-}
-
-}
-
-// get all transactions of a user
-exports.getTransactions=(req,res) => {
-try{
-    const id=req.params.uid;
-query1="SELECT * FROM Users INNER JOIN Transactions ON Users.uid=Transactions.uid WHERE Users.uid=?"
-const users=await User.query(query1 ,{replacements: [id],type: sequelize.QueryTypes.SELECT})
-res.json(users)
-}
-catch(err){
-    res.status(500).send({
-        message: "Error retrieving users with id=" + id+ " with error "+err.message            
-      });
-}
-}
