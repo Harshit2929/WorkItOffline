@@ -1,8 +1,10 @@
 const Shg=require('../sequelize').Shg
 const Meeting=require('../sequelize').Meeting
-// Create and Save a new Tutorial
-exports.create = (req, res) => {
-    // Create and Save a new Shg
+
+
+ 
+// Create and Save a new Shg
+exports.create = async (req, res) => {
     try{
         console.log(req.body)
         const newShg = await Shg.create(req.body);
@@ -11,6 +13,7 @@ exports.create = (req, res) => {
         res.status(400).end(error);
     }
 };
+
 // Retrieve all SHGs from the database.
 exports.getAll = (req, res) => {
     const shgs = await Shg.findAll();
