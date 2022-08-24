@@ -14,6 +14,7 @@ exports.create = async (req, res) => {
 exports.getAll = (req, res) => {
     User.findAll().then((data) => {
         res.json(data)
+        console.log("this is data"+data)
     })
     .catch(err =>{
         res.status(500).send({
@@ -22,20 +23,14 @@ exports.getAll = (req, res) => {
           });
     })
 
-    res.json(users);  
+    // res.json(users);  
 };
 // Find a single User with an id
 exports.getOne = (req, res) => {
 const id=req.params.uid
 User.findByPk(id)
 .then(data => {
-  if (data) {
-    res.send(data);
-  } else {
-    res.status(404).send({
-      message: `Cannot find user with id=${id}.`
-    });
-  }
+  res.json(data)
 })
 .catch(err => {
   res.status(500).send({
@@ -44,51 +39,51 @@ User.findByPk(id)
 });
 };
 
-exports.update= (req,res) =>{
-    const id=req.params.uid
-    User.update(req.body,{
-        where:{
-            uid:id
-        }
-    })
-    .then(data => {
-        if (data) {
-            res.send(data);
-        } else {
-            res.status(404).send({
-              message: `Cannot find user with id=${id}.`
-            });
-        }
-      }).catch(err => {
-        res.status(500).send({
-          message: "Error updating user with id=" + id
-        });
-      }
-    );
-}
+// exports.update= (req,res) =>{
+//     const id=req.params.uid
+//     User.update(req.body,{
+//         where:{
+//             uid:id
+//         }
+//     })
+//     .then(data => {
+//         if (data) {
+//             res.send(data);
+//         } else {
+//             res.status(404).send({
+//               message: `Cannot find user with id=${id}.`
+//             });
+//         }
+//       }).catch(err => {
+//         res.status(500).send({
+//           message: "Error updating user with id=" + id
+//         });
+//       }
+//     );
+// }
 
-exports.delete = (req, res) => {
-const id=req.params.uid
-User.destroy({
-  where:{
-      uid:id
-  }
-})
-.then(data => {
-  if (data) {
-    res.send(data);
-  } else {
-    res.status(404).send({
-      message: `Cannot find user with id=${id}.`
-    });
-  }
-}).catch(err => {
-  res.status(500).send({
-    message: "Error deleting user with id=" + id
-  });
-}
-);
-}
+// exports.delete = (req, res) => {
+// const id=req.params.uid
+// User.destroy({
+//   where:{
+//       uid:id
+//   }
+// })
+// .then(data => {
+//   if (data) {
+//     res.send(data);
+//   } else {
+//     res.status(404).send({
+//       message: `Cannot find user with id=${id}.`
+//     });
+//   }
+// }).catch(err => {
+//   res.status(500).send({
+//     message: "Error deleting user with id=" + id
+//   });
+// }
+// );
+// }
 
 // get all meetings of a user
 exports.getMeetings=async (req,res) => {

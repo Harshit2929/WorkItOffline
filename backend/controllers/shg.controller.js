@@ -2,13 +2,14 @@ const Shg=require('../sequelize').Shg
 const Meeting=require('../sequelize').Meeting
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
-    if(!req.body.title){
-        res.status(400).send({
-            message: "Content can not be empty!"
-        });
+    // Create and Save a new Shg
+    try{
+        console.log(req.body)
+        const newShg = await Shg.create(req.body);
+        res.json(newShg);
+    }catch(error){
+        res.status(400).end(error);
     }
-const newUser=await Shg.create(req.body);
-res.json(newUser);
 };
 // Retrieve all SHGs from the database.
 exports.getAll = (req, res) => {

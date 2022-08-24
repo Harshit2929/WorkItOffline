@@ -52,7 +52,7 @@ let s = async () =>{
 }
 s()
 
-
+// connection.sync({force: true})
 
 
 module.exports = {
