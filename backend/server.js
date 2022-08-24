@@ -17,6 +17,10 @@ app.use(express.json());
 app.use("/users", userRoutes);
 app.use("/meetings", meetingRoutes);
 
+app.get("/", (req, res) => {
+    res.send("Hello World");
+});
+
 app.listen(process.env.PORT, ()=>{
     console.log(`Server Started at Port ${process.env.PORT}`)
 })
