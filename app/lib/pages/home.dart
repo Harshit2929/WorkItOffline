@@ -1,7 +1,14 @@
+import 'dart:io';
+
+import 'package:app/constants/env.dart';
 import 'package:app/pages/orders.dart';
-import 'package:app/routes.dart';
+import 'package:app/services/request.service.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:app/services/image_compression.dart';
 import 'package:app/widgets/appbar.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,37 +19,58 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
+  late final List<Widget> screens;
 
   @override
   void initState() {
     super.initState();
+    screens = <Widget>[
+      Container(
+          child: Center(
+        child: Column(
+          children: [
+            const MyAppbar(
+              text: "Home",
+            ),
+            Text("Home"),
+            IconButton(
+              icon: Icon(
+                Icons.add,
+                size: 40,
+              ),
+              onPressed: () {
+                _pickNUpload();
+              },
+            )
+          ],
+        ),
+      )),
+      OrdersPage(),
+      OrdersPage(),
+      OrdersPage(),
+    ];
   }
 
-  final screens = <Widget>[
-    Container(
-        child: Center(
-      child: Column(
-        children: [
-          const MyAppbar(
-            text: "Home",
-          ),
-          Text("Home"),
-          IconButton(
-            icon: Icon(
-              Icons.add,
-              size: 40,
-            ),
-            onPressed: () {
-
-            },
-          )
-        ],
-      ),
-    )),
-    OrdersPage(),
-    OrdersPage(),
-    OrdersPage(),
-  ];
+  void _pickNUpload() async {
+    final pickr = ImagePicker();
+    final image = await pickr.pickImage(source: ImageSource.camera);
+    if (image != null) {
+      final compreesedFile =
+          await ImageCompressionService(File(image.path)).exec();
+      print(compreesedFile);
+      if (compreesedFile != null) {
+        final partFile = await MultipartFile.fromFile(
+          compreesedFile.path,
+          filename: compreesedFile.uri.toString(),
+          contentType: MediaType("image", ".jpg"),
+        );
+        FormData formData = FormData.fromMap({
+          "files": partFile,
+        });
+        RequestService.post("$BASE_URL/images", {}, formData);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
