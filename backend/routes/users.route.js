@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const user = require("../controllers/user.controllers");
+let sms = require("./../functions/sms");
 
 router.post('/', user.create);
 //get all users

@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         textTheme: AppTheme.textTheme,
+
       ),
       onGenerateRoute: onGenerateRoute,
       initialRoute: AllRoutesConstants.initPage,

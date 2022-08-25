@@ -3,9 +3,7 @@ const router = express.Router();
 let {upload}= require("./../imports");
 
 //create a meeting
-router.post('/', upload.single('file'), (req,res)=>{
-    console.log(req.body);
-    console.log(req.file);
+router.post('/', upload.array('files'), (req,res)=>{
     res.json({ message: "Successfully uploaded files" });
 });
 

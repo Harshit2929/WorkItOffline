@@ -35,7 +35,10 @@ class _OrdersPageState extends State<OrdersPage> {
           SingleChildScrollView(
             child: Column(
               children: [
-                const Text("In Progress"),
+                Text(
+                  "In Progress",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
                 ListView.builder(
                   itemBuilder: (ctx, id) {
                     return itemBuilder(ctx, id, inProgressOrders,
@@ -77,7 +80,9 @@ class _OrdersPageState extends State<OrdersPage> {
       trailing: Row(
         children: [
           Text("Quantity"),
-          completed ? Checkbox(value: true, onChanged: (val) {}) : const Text("2500"),
+          completed
+              ? Checkbox(value: true, onChanged: (val) {})
+              : const Text("2500"),
         ],
       ),
     );
