@@ -10,12 +10,14 @@ const {User, Meeting, MeetingUser, Transaction, Shg} = require("./sequelize")
 
 const userRoutes = require("./routes/users.route");
 const meetingRoutes = require("./routes/meetings.route");
+const transactionRoutes = require("./routes/transactions.route");
 
 app.use(express.json());
 
 /* Middlewares */
 app.use("/users", userRoutes);
 app.use("/meetings", meetingRoutes);
+app.use("/transactions", transactionRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World");
