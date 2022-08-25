@@ -27,6 +27,15 @@ class _HomePageState extends State<HomePage> {
             text: "Home",
           ),
           Text("Home"),
+          IconButton(
+            icon: Icon(
+              Icons.add,
+              size: 40,
+            ),
+            onPressed: () {
+
+            },
+          )
         ],
       ),
     )),
