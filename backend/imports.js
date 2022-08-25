@@ -1,7 +1,8 @@
 const express = require("express")
 const app = express()
 require('dotenv').config()
-
+let path = require("path")
+let hash = require("random-hash")
 const { Sequelize } = require('sequelize');
 
 
@@ -9,13 +10,13 @@ const multer  = require('multer')
 
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
-      callback(null, '/uploads');
+      callback(null, path.join(__dirname, '/uploads/'));
     },
     filename: function (req, file, callback) {
-      let temp = file.originalname.split('.');
+        let temp = file.originalname.split('.');
         const filename = temp[0] + '-' + hash.generateHash({length: 5}) + '.' + temp[1]
-	
-      callback(null, filename);
+
+        callback(null, filename);
     }
   });
 
