@@ -22,7 +22,8 @@
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "random-hash": "^4.0.1",
-    "sequelize": "^6.21.4"
+    "sequelize": "^6.21.4",
+    "twilio": "^3.81.0"
   },
   "devDependencies": {
     "sequelize-cli": "^6.4.1"
