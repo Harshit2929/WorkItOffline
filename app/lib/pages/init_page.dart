@@ -1,3 +1,4 @@
+import 'package:app/services/request.service.dart';
 import 'package:app/widgets/buttons.dart';
 import 'package:app/constants/texts.dart';
 import 'package:app/routes.dart';
@@ -30,7 +31,7 @@ class _InitialPageState extends State<InitialPage> {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
                   TextConstants.appTitle,
@@ -62,9 +63,13 @@ class _InitialPageState extends State<InitialPage> {
                     });
                   },
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
                 ActiveButton(
                   text: TextConstants.login,
                   callback: () {
+                    // RequestService.get(url, headers)
                     // Navigator.pushNamed(context, AllRoutesConstants.login);
                     Navigator.pushReplacementNamed(
                         context, AllRoutesConstants.home);

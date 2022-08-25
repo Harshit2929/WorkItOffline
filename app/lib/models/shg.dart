@@ -1,8 +1,9 @@
 class SHG {
-  final String name, district, state, shgId, leaderName;
+  final String name, village, district, state, shgId, leaderName;
   final DateTime registeredDate;
 
   SHG({
+    required this.village,
     required this.name,
     required this.district,
     required this.state,

@@ -1,3 +1,4 @@
+import 'package:app/pages/orders.dart';
 import 'package:app/routes.dart';
 import 'package:app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
@@ -10,25 +11,64 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentIndex = 0;
+
   @override
   void initState() {
     super.initState();
   }
 
+  final screens = <Widget>[
+    Container(
+        child: Center(
+      child: Column(
+        children: [
+          const MyAppbar(
+            text: "Home",
+          ),
+          Text("Home"),
+        ],
+      ),
+    )),
+    OrdersPage(),
+    OrdersPage(),
+    OrdersPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppbar(
-        text: "Home",
-      ),
-      body: Center(
-          child: GridView.count(
-        crossAxisCount: 2,
-        children: [
-          _button(Icons.add, '', context, AllRoutesConstants.newMeeting),
-          _button(Icons.list_alt, '', context, AllRoutesConstants.records)
+      body: screens[currentIndex],
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int id) {
+          setState(() {
+            currentIndex = id;
+          });
+        },
+        selectedIndex: currentIndex,
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.list),
+            label: "Orders",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.money),
+            label: "Receipts",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.money),
+            label: "Receipts",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.money),
+            label: "Training",
+          ),
         ],
-      )),
+      ),
     );
   }
 
