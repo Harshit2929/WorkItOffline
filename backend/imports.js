@@ -4,6 +4,22 @@ require('dotenv').config()
 
 const { Sequelize } = require('sequelize');
 
+
+const multer  = require('multer')
+
+const storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+      callback(null, '/uploads');
+    },
+    filename: function (req, file, callback) {
+        console.log(file)
+      callback(null, file.fieldname);
+    }
+  });
+
+const upload = multer({storage:storage})
+
+
 const DBPROTOCOL = process.env.DBPROTOCOL;
 const DBHOST = process.env.DBHOST;
 const DBUSER = process.env.DBUSER;
@@ -21,5 +37,6 @@ module.exports = {
     app, 
     Sequelize,
     connection,
-    express
+    express,
+    upload
 }
