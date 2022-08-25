@@ -16,7 +16,6 @@ app.use(express.json());
 
 /* Middlewares */
 app.use("/users", userRoutes);
-app.use("/meetings", meetingRoutes);
 app.use("/transactions", transactionRoutes);
 
 app.get("/", (req, res) => {
