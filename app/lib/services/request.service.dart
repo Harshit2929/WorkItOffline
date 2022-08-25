@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
 class RequestService {
-  static Future<Response> request(String url, Options options,
-      Map<String, dynamic>? data, Map<String, dynamic>? headers,
+  static Future<Response> request(
+      String url, Options options, dynamic data, Map<String, dynamic>? headers,
       [bool validateStatus = false]) async {
     // final h = {
     //   ...?headers,
@@ -35,7 +35,7 @@ class RequestService {
   }
 
   static Future<Response> post(
-      String url, Map<String, String>? headers, Map<String, dynamic> data,
+      String url, Map<String, String>? headers, dynamic data,
       [bool validateStatus = false]) {
     print(url);
     Options options = Options(method: 'POST');
