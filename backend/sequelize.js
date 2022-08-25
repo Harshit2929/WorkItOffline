@@ -43,7 +43,7 @@ let s = async () =>{
 
          
 
-        await connection.sync().then(()=>{
+        await connection.sync({force:true}).then(()=>{
             console.log("TABLE ADDED")
         })
       } catch (error) {
