@@ -8,8 +8,8 @@ router.get('/', user.getAll);
 //get a user
 router.get('/:uid', user.getOne);
 //get all meetings of a user
-router.get('/:uid/meetings', user.getMeetings);
+router.get('/meetings', user.getMeetings);
 //get all transactions of a user
-router.get('/:uid/transactions', user.getTransactions);
+// router.get('/:uid/transactions', user.getTransactions);
 
 module.exports = router;

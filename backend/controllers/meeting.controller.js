@@ -21,7 +21,6 @@ exports.getAll = (req, res) => {
           });
     })
 
-    res.json(meetings);  
 };
 
 // Find a single meeting with an id

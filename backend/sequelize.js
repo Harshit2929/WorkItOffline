@@ -25,7 +25,7 @@ UserModel.belongsTo(ShgModel, {targetKey:'shg_id',foreignKey:'shg_id'})
 
 //many to many relationship between  Meeting and User
 MeetingModel.belongsToMany(UserModel, {through:MeetingUserModel})
-UserModel.belongsToMany(MeetingModel, {through:MeetingUserModel})
+UserModel.belongsToMany(MeetingModel, {through:MeetingUserModel});
 
 // one to many relationship between  user and transaction
 TransactionModel.belongsTo(UserModel, {targetKey:'uid',foreignKey:'uid'})

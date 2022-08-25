@@ -31,7 +31,11 @@ const User = connection.define("users", {
         type: DataTypes.BIGINT,
         allowNull:false
       }
-      ,is_admin:{
+      ,is_shg_lead:{
+        type:DataTypes.BOOLEAN,
+        allowNull:false
+      }
+      ,is_ao:{
         type:DataTypes.BOOLEAN,
         allowNull:false
       }
@@ -42,11 +46,12 @@ const User = connection.define("users", {
 // })()
 // added some dummy data only once
 // (async function (){
-// const user1=await User.create({ uid: 4, firstName: "Jo", lastName: "dbjksb", fatherName: "sncxscdnnc ", husbandName: "szdncddc" ,is_admin:true, phone_number: 999994999})
-// const user2=await User.create({ uid: 5, firstName: "Jfnd", lastName: "bdkesd", fatherName: "Jane Doe", husbandName: "bdbmcd",is_admin:false, phone_number: 999999569})
-// const user3=await User.create({ uid: 6, firstName: "bsdbmc", lastName: "sbcdsms", fatherName: "nkscmsn", husbandName: "cbdsc",is_admin:false, phone_number: 999999999})
-// console.log(user1.firstName)
-// console.log(user2.lastName)
+// const user1=await User.create({ uid: 7, firstName: "esdcmbdssn", lastName: "ddsfndscnffdv", fatherName: "sncxscsdnc ", husbandName: "sdfdscddc" ,is_admin:false, phone_number: 9567994999})
+// const user2=await User.create({ uid: 8, firstName: "ddbjs", lastName: "kcsndasdfsccndk", fatherName: "Jadsfdsce", husbandName: "bdsdd",is_admin:false, phone_number: 999569569})
+// const user3=await User.create({ uid: 9, firstName: "kcbhjd", lastName: "dsscf", fatherName: "nkscdsdcfdsn", husbandName: "cbsdfsc",is_admin:false, phone_number: 945999119})
+
+// // console.log(user1.firstName)
+// // console.log(user2.lastName)
 // })()
 
 module.exports = User

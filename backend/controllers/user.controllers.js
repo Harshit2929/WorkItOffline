@@ -87,30 +87,20 @@ User.findByPk(id)
 
 // get all meetings of a user
 exports.getMeetings=async (req,res) => {
-try{
-    const id=req.params.uid;
-query1="SELECT * FROM Users INNER JOIN MeetingUsers ON Users.uid=MeetingUsers.uid  WHERE Users.uid=?"
-const users=await User.query(query1 ,{replacements: [id],type: sequelize.QueryTypes.SELECT})
+    // const id=req.params.uid;
+    try{
+        query1="SELECT * FROM Users"
+
+        // query1="SELECT * FROM Users INNER JOIN MeetingUsers ON Users.uid=MeetingUsers.uid  WHERE Users.uid=?"
+const users=await User.query(query1 ,{type: sequelize.QueryTypes.SELECT})
 res.json(users)
+console.log(users)
 }
 catch(err){
     res.status(500).send({
-        message: "Error retrieving users with id=" + id+ " with error "+err.message            
+        message: "Error retrieving users with id=" +err.message            
       });
 }
 
 }
 
-exports.getTransactions=async (req,res) => {
-    try{
-        const id=req.params.uid;
-    query1="SELECT * FROM Users INNER JOIN Transactions ON Users.uid=Transactions.uid WHERE Users.uid=?"
-    const users=await User.query(query1 ,{replacements: [id],type: sequelize.QueryTypes.SELECT})
-    res.json(users)
-    }
-    catch(err){
-        res.status(500).send({
-            message: "Error retrieving users with id=" + id+ " with error "+err.message            
-          });
-    }
-    }
