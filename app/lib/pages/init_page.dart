@@ -10,26 +10,25 @@ class InitialPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Expanded(
-          child: SafeArea(
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    TextConstants.appTitle,
-                    style: TextStyle(fontSize: 40),
-                  ),
-                  ActiveButton(
-                    text: TextConstants.login,
-                    callback: () {
-                      // Navigator.pushNamed(context, AllRoutesConstants.login);
-                      Navigator.pushNamed(context, AllRoutesConstants.home);
-                    },
-                  )
-                ],
-              ),
+        child: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  TextConstants.appTitle,
+                  style: TextStyle(fontSize: 40),
+                ),
+                ActiveButton(
+                  text: TextConstants.login,
+                  callback: () {
+                    // Navigator.pushNamed(context, AllRoutesConstants.login);
+                    Navigator.pushReplacementNamed(
+                        context, AllRoutesConstants.home);
+                  },
+                )
+              ],
             ),
           ),
         ),

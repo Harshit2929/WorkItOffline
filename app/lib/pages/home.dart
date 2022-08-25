@@ -7,17 +7,35 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Container(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      body: Center(
+          child: GridView.count(
+        crossAxisCount: 2,
+        children: [
+          _button(Icons.add, '', context, AllRoutesConstants.newMeeting),
+          _button(Icons.list_alt, '', context, AllRoutesConstants.records)
+        ],
+      )),
+    );
+  }
+
+  Widget _button(
+      IconData icon, String text, BuildContext context, String route) {
+    return Container(
+        padding: const EdgeInsets.all(20),
         width: 50,
         height: 50,
-        color: Colors.pink,
-        child: IconButton(
+        child: Container(
+          color: Colors.pink,
+          child: IconButton(
+            color: Colors.white,
             onPressed: () {
-              Navigator.pushNamed(context, AllRoutesConstants.newMeeting);
+              Navigator.pushNamed(context, route);
             },
-            icon: const Icon(Icons.add)),
-      ),
-    ));
+            icon: Icon(icon),
+          ),
+        ));
   }
 }

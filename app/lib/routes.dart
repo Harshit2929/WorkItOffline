@@ -1,5 +1,6 @@
 import 'package:app/pages/home.dart';
 import 'package:app/pages/init_page.dart';
+import 'package:app/pages/new_meeting.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/login.dart';
@@ -13,7 +14,7 @@ Route? onGenerateRoute(RouteSettings settings) {
     case AllRoutesConstants.home:
       return MaterialPageRoute(builder: (_) => HomePage());
     case AllRoutesConstants.newMeeting:
-      return MaterialPageRoute(builder: (_) => HomePage());
+      return MaterialPageRoute(builder: (_) => NewMeeting());
   }
 }
 
@@ -24,4 +25,5 @@ class AllRoutesConstants {
   static const home = 'home';
   static const login = 'login';
   static const newMeeting = 'newMeeting';
+  static const records = 'records';
 }
