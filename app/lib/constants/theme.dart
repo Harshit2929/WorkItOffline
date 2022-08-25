@@ -71,8 +71,8 @@ class AppTheme {
   static const Color dismissibleBackground = Color(0xFF364A54);
   static const Color chipBackground = Color(0xFFEEF1F3);
   static const Color spacer = Color(0xFFF2F2F2);
-  static const String fontName = 'Normal_Font_1';
-  static const String font_name_main = 'Main_Font_1';
+  static const String fontName = 'Ubuntu';
+  static const String font_name_main = 'Raleway';
   static const Color linkText = Color(0xff007bff);
 
   static TextStyle get_text_style(String type) {
@@ -101,16 +101,16 @@ class AppTheme {
       labelMedium: label);
 
   static const TextStyle headline4 = TextStyle(
-    fontFamily: fontName,
-    fontWeight: FontWeight.w500,
-    fontSize: 34,
+    fontFamily: 'Ubuntu',
+    fontWeight: FontWeight.w200,
+    fontSize: 32,
     letterSpacing: 0.25,
   );
 
   static const TextStyle headline5 = TextStyle(
-    fontFamily: fontName,
-    fontWeight: FontWeight.w500,
-    fontSize: 24,
+    fontFamily: 'Raleway',
+    fontWeight: FontWeight.w200,
+    fontSize: 32,
     letterSpacing: 0,
   );
 

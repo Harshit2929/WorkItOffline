@@ -3,6 +3,7 @@ import 'package:app/widgets/buttons.dart';
 import 'package:app/constants/texts.dart';
 import 'package:app/routes.dart';
 import 'package:flutter/material.dart';
+import '../constants/theme.dart';
 
 class InitialPage extends StatefulWidget {
   InitialPage({Key? key}) : super(key: key);
@@ -33,12 +34,15 @@ class _InitialPageState extends State<InitialPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                 Text(
                   TextConstants.appTitle,
-                  style: TextStyle(fontSize: 40),
+                  style: Theme.of(context).textTheme.headline5,
                 ),
                 TextField(
-                  decoration: const InputDecoration(
+                  decoration:  InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     hintText: "Username",
                   ),
                   onChanged: (val) {
@@ -54,6 +58,7 @@ class _InitialPageState extends State<InitialPage> {
                 ),
                 TextField(
                   decoration: const InputDecoration(
+
                     hintText: "password",
                   ),
                   obscureText: true,
