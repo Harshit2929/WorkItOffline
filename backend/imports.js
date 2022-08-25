@@ -12,8 +12,10 @@ const storage = multer.diskStorage({
       callback(null, '/uploads');
     },
     filename: function (req, file, callback) {
-        console.log(file)
-      callback(null, file.fieldname);
+      let temp = file.originalname.split('.');
+        const filename = temp[0] + '-' + hash.generateHash({length: 5}) + '.' + temp[1]
+	
+      callback(null, filename);
     }
   });
 
