@@ -30,8 +30,14 @@ class DatabaseService {
 
   Future<Database> _initDatabase() async {
     // Do all get requests
-    final req = await RequestService.get('$BASE_URL/activities/1', {});
-    print(req.data);
+    try {
+      final req = await RequestService.get('$BASE_URL/activity/1', {});
+      print(req.statusCode);
+      print(req.data);
+    } catch (e) {
+      print(e);
+    }
+
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, 'shg.db');
     return await openDatabase(path, onCreate: _onCreate, version: 1);

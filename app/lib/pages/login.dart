@@ -1,3 +1,4 @@
+import 'package:app/constants/env.dart';
 import 'package:app/models/cluster.dart';
 import 'package:app/models/shg.dart';
 import 'package:app/widgets/buttons.dart';
@@ -15,36 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late String username, password;
   late bool isValid;
-
-  final List<SHG> shgs = [
-    SHG(
-      shgId: '4',
-      village: 'Savli',
-      name: 'XYZ SHG',
-      district: 'Sabarkantha',
-      state: 'Gujarat',
-      leaderName: 'ABC Ben',
-      registeredDate: DateTime.utc(2020, 12, 4),
-    ),
-    SHG(
-      shgId: '5',
-      village: 'Savli',
-      name: 'Lorem SHG',
-      district: 'Ipsum',
-      state: 'Rajasthan',
-      leaderName: 'Lorem Ipsum ',
-      registeredDate: DateTime.utc(2021, 10, 1),
-    ),
-    SHG(
-      shgId: '5',
-      village: 'Dummy village Name',
-      name: 'ABC SHG',
-      district: 'Surat',
-      state: 'Gujarat',
-      leaderName: 'PQR Ben',
-      registeredDate: DateTime.utc(2019, 4, 1),
-    ),
-  ];
+  final List<SHG> shgs = dummySHGs;
 
   @override
   void initState() {

@@ -8,23 +8,21 @@ import 'pages/login.dart';
 
 Route? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
-
     case AllRoutesConstants.login:
       return MaterialPageRoute(builder: (_) => LoginPage());
 
     case AllRoutesConstants.homeAO:
       final cluster = settings.arguments as Cluster;
       return MaterialPageRoute(
-          builder: (_) => AOHome(
-            cluster: cluster,
-          ));
+          builder: (_) => HomeAO(
+                cluster: cluster,
+              ));
     case AllRoutesConstants.homeSHG:
       final shg = settings.arguments as SHG;
       return MaterialPageRoute(
           builder: (_) => HomePage(
-            shg: shg,
-          ));
-
+                shg: shg,
+              ));
   }
 }
 
@@ -35,5 +33,4 @@ class AllRoutesConstants {
 
   static const homeSHG = 'home';
   static const homeAO = 'aoHome';
-
 }

@@ -7,13 +7,14 @@ class MessagesService {
   void sendSMS(Map<String, dynamic> data) async {
     bool? permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
     if (permissionsGranted ?? false) {
+      final SmsSendStatusListener listener = (SendStatus status) {
+        print(status);
+      };
       telephony.sendSms(
-          to: "9558158852",
+          to: "9327619673",
+          statusListener: listener,
           isMultipart: true,
-          message: "Masdaws daw adka;kdwa;'kdl;vjkal;kdjwvo"
-              "qa;ljdd;wovqjo;'ajkdo;'vjkadbkwa;'okdl;'vkaw;'ldkwqac;kwal;dk"
-              "dlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllay the force be with you!");
-      print(JsonEncoder().convert(data));
+          message: JsonEncoder().convert(data).toString());
     }
   }
 }

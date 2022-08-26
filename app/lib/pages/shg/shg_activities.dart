@@ -15,13 +15,15 @@ class SHGActivities extends StatefulWidget {
 
 class _SHGActivitiesState extends State<SHGActivities> {
   late final List<Activity> activities;
-  Future<Response> future =
-      RequestService.get("$BASE_URL/activities/4", {}, true);
+
+  late final Future<Response> future;
 
   @override
   void initState() {
     super.initState();
     getAllOrders();
+
+    // RequestService.get("$BASE_URL/activity/2", {}, false);
   }
 
   @override
@@ -34,6 +36,8 @@ class _SHGActivitiesState extends State<SHGActivities> {
           );
         }
         if (snapshot.hasError) {
+          print(snapshot.error);
+          print(snapshot.data?.statusCode);
           print("THere is some error");
         }
         return Container(

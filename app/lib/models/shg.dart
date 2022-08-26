@@ -11,4 +11,15 @@ class SHG {
     required this.leaderName,
     required this.registeredDate,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'village': this.village,
+      'name': this.name,
+      'district': district,
+      'state': state,
+      'shgId': shgId,
+      'leaderName': leaderName,
+    };
+  }
 }
