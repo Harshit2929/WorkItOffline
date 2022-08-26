@@ -24,11 +24,11 @@ const User = connection.define("users", {
         type: DataTypes.STRING
     },
     amount_due: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         allowNull:true
       },
     phone_number: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         allowNull:false
       }
       ,is_admin:{
@@ -42,9 +42,9 @@ const User = connection.define("users", {
 });
 
 
-// ( async function(){
-// await User.sync({ alter: true })
-// })()
+( async function(){
+await User.sync({ alter: true })
+})()
 // added some dummy data only once
 // (async function (){
 // const user1=await User.update({ shg_id:2 }, {

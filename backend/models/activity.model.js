@@ -23,10 +23,14 @@ const Activity = connection.define("activity", {
         type:DataTypes.INTEGER,
         allowNull: false
     },
-    status:{
-        type: DataTypes.ENUM,
-        values:['not_completed','completed', 'paid']
-    }
+    is_completed:{
+        type:DataTypes.BOOLEAN, 
+        allowNull: false
+    },
+    is_paid:{
+        type:DataTypes.BOOLEAN, 
+        allowNull: false
+    },
 });
 
 // (async function (){
