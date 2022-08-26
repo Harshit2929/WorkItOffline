@@ -5,6 +5,10 @@ Solution for Smart India Hackathon  2022
 - When the uer is offline we will make peer to peer connection to sync our database locally using sms.
 - We are using azure to deploy our containers ,it makes our application secure as VM instances and runtime software are regularly updated to address newly discovered vulnerabilities by azure,communication of secrets (such as connection strings) between your app and other Azure resources,stays within Azure and doesn't cross any network boundaries. Secrets are always encrypted when stored.
 
+## Tech Stack
+- Postgres sql,Nodejs,Sequelize ,Twilio api(Backend)
+- Flutter (frontend)
+
 ## Things still in progress
 - We wanted to built sync api which when the user is online will synchronize client and server database.
 - Using twilio service we wanted to sent details from the shg member to notify the ao officer whois governing the shgs.
