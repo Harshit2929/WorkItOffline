@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
             label: "Member List",
           ),
           NavigationDestination(
-            icon: Icon(Icons.book_outlined),
+            icon: Icon(Icons.chrome_reader_mode_rounded),
             label: "Training",
           ),
         ],
