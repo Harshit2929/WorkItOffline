@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Remove the debug banner
+        // Remove the debug banner
         debugShowCheckedModeBanner: false,
         title: 'Activities',
         theme: ThemeData(
@@ -25,8 +25,11 @@ class HomePage extends StatelessWidget {
   // Generate some dummy data
   final List<Map<String, dynamic>> _items = List.generate(
       10,
-          (index) =>
-      {"id": index+1, "title": "Item ${index+1}", "subtitle": "Subtitle ${index+1}"});
+      (index) => {
+            "id": index + 1,
+            "title": "Item ${index + 1}",
+            "subtitle": "Subtitle ${index + 1}"
+          });
 
   HomePage({Key? key}) : super(key: key);
 
@@ -40,19 +43,18 @@ class HomePage extends StatelessWidget {
             children: ListTile.divideTiles(
                 color: Colors.deepPurple,
                 tiles: _items.map((item) => ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.amber,
-                    child: Text(item['id'].toString()),
-                  ),
-                  title: Text(item['title']),
-                  subtitle: Text(item['subtitle']),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.add_a_photo),
-                    onPressed: () {},
-                  ),
-                ))).toList())
-    );
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.amber,
+                        child: Text(item['id'].toString()),
+                      ),
+                      title: Text(item['title']),
+                      subtitle: Text(item['subtitle']),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.add_a_photo),
+                        onPressed: () {},
+                      ),
+                    ))).toList()));
   }
 
-  // Widget build(BuildContext context)
+// Widget build(BuildContext context)
 }
