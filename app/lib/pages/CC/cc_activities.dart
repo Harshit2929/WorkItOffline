@@ -9,7 +9,7 @@ class CCActivities extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          
+
         ],
       )
     );
