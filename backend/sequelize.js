@@ -8,13 +8,16 @@ const ShgModel = require("./models/shg.model");
 const TransactionModel = require("./models/transaction.model");
 const MeetingModel = require("./models/meeting.model");
 const MeetingUserModel = require("./models/meetingUser.model");
-
+// const ActivityModel=require("./models/activity.model")
+const TrainingModel=require("./models/training.model")
 
 const User = new UserModel(connection, DataTypes);
 const Shg = new ShgModel(connection, DataTypes);
 const Transaction = new TransactionModel(connection, DataTypes);
 const Meeting = new MeetingModel(connection, DataTypes);
 const MeetingUsers = new MeetingUserModel(connection, DataTypes);
+// const Activity = new ActivityModel(connection, DataTypes);
+const Training=new TrainingModel(connection, DataTypes)
 
 
 // Relations between different tables
@@ -35,15 +38,15 @@ UserModel.hasMany(TransactionModel, {sourceKey:'uid',foreignKey:'uid'})
 TransactionModel.belongsTo(ShgModel, {targetKey:'shg_id',foreignKey:'shg_id'})
 ShgModel.hasMany(TransactionModel, {sourceKey:'shg_id',foreignKey:'shg_id'})
 
+// ActivityModel.hasMany(ShgModel, {sourceKey:'shg_id',foreignKey:'shg_id'})
+// ShgModel.belongsTo(ActivityModel, {targetKey:'shg_id',foreignKey:'shg_id'})
 
 let s = async () =>{
     try {
         await connection.authenticate();
         console.log('Connection has been established successfully.');
 
-         
-
-        await connection.sync({force:true}).then(()=>{
+        await connection.sync().then(()=>{
             console.log("TABLE ADDED")
         })
       } catch (error) {
@@ -60,5 +63,6 @@ module.exports = {
     Meeting,
     Shg,
     MeetingUsers,
-    Transaction
+    Transaction,
+   Training
 }

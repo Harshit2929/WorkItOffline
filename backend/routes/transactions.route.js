@@ -15,8 +15,8 @@ router.get('/user/:uid', transactions.getTransactionOfUser);
 //create Transaction
 router.post('/', transactions.createTransaction);
 
-router.get('/sendsms', (req,res)=>{
-    sms.sendsms(req,res)
+// router.get('/sendsms', (req,res)=>{
+//     sms.sendsms(req,res)
 
-})
+// })
 module.exports = router;
