@@ -19,17 +19,13 @@ const Activity = connection.define("activity", {
         type:DataTypes.INTEGER,
         allowNull: false
     },
-    is_completed:{
-        type:DataTypes.BOOLEAN, 
-        allowNull: false
-    },
-    is_paid:{
-        type:DataTypes.BOOLEAN, 
-        allowNull: false
-    },
     shg_id:{
         type:DataTypes.INTEGER,
         allowNull: false
+    },
+    status:{
+        type: DataTypes.ENUM,
+        values:['not_completed','completed', 'paid']
     }
 });
 
