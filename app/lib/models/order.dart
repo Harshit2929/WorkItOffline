@@ -1,5 +1,3 @@
-import 'package:app/services/database_service.dart';
-
 enum OrderStatus { inProgress, done, paymentCleared }
 
 class Order {

@@ -1,7 +1,6 @@
 import 'package:app/routes.dart';
 import 'package:flutter/material.dart';
-
-import 'constants/theme.dart';
+import 'constants/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         textTheme: AppTheme.textTheme,
-
       ),
       onGenerateRoute: onGenerateRoute,
-      initialRoute: AllRoutesConstants.initPage,
+      initialRoute: AllRoutesConstants.login,
     );
   }
 }

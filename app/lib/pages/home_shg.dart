@@ -1,16 +1,15 @@
 import 'dart:io';
 
 import 'package:app/constants/env.dart';
-import 'package:app/pages/orders.dart';
 import 'package:app/services/request.service.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:app/services/image_compression.dart';
-import 'package:app/widgets/appbar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../models/shg.dart';
+import '../widgets/appbar.dart';
 
 class HomePage extends StatefulWidget {
   final SHG shg;
@@ -32,27 +31,24 @@ class _HomePageState extends State<HomePage> {
     screens = <Widget>[
       Container(
           child: Center(
-            child: Column(
-              children: [
-                const MyAppbar(
-                  text: "Home",
-                ),
-                Text("Home"),
-                IconButton(
-                  icon: Icon(
-                    Icons.add,
-                    size: 40,
-                  ),
-                  onPressed: () {
-                    _pickNUpload();
-                  },
-                )
-              ],
+        child: Column(
+          children: [
+            const MyAppbar(
+              text: "Home",
             ),
-          )),
-      OrdersPage(),
-      OrdersPage(),
-      OrdersPage(),
+            Text("Home"),
+            IconButton(
+              icon: Icon(
+                Icons.add,
+                size: 40,
+              ),
+              onPressed: () {
+                _pickNUpload();
+              },
+            )
+          ],
+        ),
+      )),
     ];
   }
 
@@ -61,7 +57,7 @@ class _HomePageState extends State<HomePage> {
     final image = await pickr.pickImage(source: ImageSource.camera);
     if (image != null) {
       final compreesedFile =
-      await ImageCompressionService(File(image.path)).exec();
+          await ImageCompressionService(File(image.path)).exec();
       print(compreesedFile);
       if (compreesedFile != null) {
         final partFile = await MultipartFile.fromFile(
@@ -128,22 +124,22 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.home),
             label: "Home",
           ),
-          NavigationDestination(
-            icon: Icon(Icons.list),
-            label: "Orders",
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.money),
-            label: "Receipts",
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.money),
-            label: "Receipts",
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.money),
-            label: "Training",
-          ),
+          // NavigationDestinatAion(
+          //   icon: Icon(Icons.list),
+          //   label: "Orders",
+          // ),
+          // NavigationDestination(
+          //   icon: Icon(Icons.money),
+          //   label: "Receipts",
+          // ),
+          // NavigationDestination(
+          //   icon: Icon(Icons.money),
+          //   label: "Receipts",
+          // ),
+          // NavigationDestination(
+          //   icon: Icon(Icons.money),
+          //   label: "Training",
+          // ),
         ],
       ),
     );
