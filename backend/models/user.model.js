@@ -47,12 +47,26 @@ const User = connection.define("users", {
 // })()
 // added some dummy data only once
 // (async function (){
-// const user1=await User.create({ uid: 7, firstName: "esdcmbdssn", lastName: "ddsfndscnffdv", fatherName: "sncxscsdnc ", husbandName: "sdfdscddc" ,is_admin:false, phone_number: 9567994999})
-// const user2=await User.create({ uid: 8, firstName: "ddbjs", lastName: "kcsndasdfsccndk", fatherName: "Jadsfdsce", husbandName: "bdsdd",is_admin:false, phone_number: 999569569})
-// const user3=await User.create({ uid: 9, firstName: "kcbhjd", lastName: "dsscf", fatherName: "nkscdsdcfdsn", husbandName: "cbsdfsc",is_admin:false, phone_number: 945999119})
+// const user1=await User.update({ shg_id:2 }, {
+//     where: {
+//       uid:7
+//     }
+//   });
+//   const user3=await User.update({ shg_id:2 }, {
+//     where: {
+//       uid:8
+//     }
+//   });
+//   const user2=await User.update({ shg_id:2 }, {
+//     where: {
+//       uid:9
+//     }
+//   });
+// // const user2=await User.create({ uid: 12, shg_id:2,firstName: "ddbjsbchjds", lastName: "sdchddcs", fatherName: "cjdskcn", husbandName: "sdfcsdb",is_admin:true,is_ao:false, phone_number: 999569569})
+// // const user3=await User.create({ uid: 13, shg_id:3,firstName: "asjdcnds", lastName: "sdbndscdd", fatherName: "chdksjc", husbandName: "sanjnc",is_admin:false, is_ao:true,phone_number: 945999119})
 
-//  console.log(user1.firstName)
-//  console.log(user2.lastName)
+// //  console.log(user1.firstName)
+// //  console.log(user2.lastName)
 //  })()
 
 module.exports = User

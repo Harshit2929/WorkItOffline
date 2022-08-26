@@ -86,21 +86,21 @@ User.findByPk(id)
 // }
 
 // get all meetings of a user
-exports.getMeetings=async (req,res) => {
-    // const id=req.params.uid;
-    try{
-        query1="SELECT * FROM Users"
+// exports.getMeetings=async (req,res) => {
+//     // const id=req.params.uid;
+//     try{
+//         query1="SELECT * FROM Users"
 
-        // query1="SELECT * FROM Users INNER JOIN MeetingUsers ON Users.uid=MeetingUsers.uid  WHERE Users.uid=?"
-const users=await User.query(query1 ,{type: sequelize.QueryTypes.SELECT})
-res.json(users)
-console.log(users)
-}
-catch(err){
-    res.status(500).send({
-        message: "Error retrieving users with id=" +err.message            
-      });
-}
+//         // query1="SELECT * FROM Users INNER JOIN MeetingUsers ON Users.uid=MeetingUsers.uid  WHERE Users.uid=?"
+// const users=await User.query(query1 ,{type: sequelize.QueryTypes.SELECT})
+// res.json(users)
+// console.log(users)
+// }
+// catch(err){
+//     res.status(500).send({
+//         message: "Error retrieving users with id=" +err.message            
+//       });
+// }
 
-}
+// }
 

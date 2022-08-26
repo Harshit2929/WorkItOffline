@@ -9,3 +9,13 @@ exports.create = async(req, res) => {
     const newa=await Activity.create(req.body);
     res.json(newa);
 };
+
+exports.findAll = async(req, res) => {
+    const shg_id = req.params.shg;
+    const activities = await Activity.findAll({
+        where: {
+            shg_id: shg_id
+        }
+    });
+    res.json(activities);
+}

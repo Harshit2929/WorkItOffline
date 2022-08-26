@@ -28,10 +28,6 @@ const Transaction = connection.define("transaction", {
         is_type:{
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        activity:{
-            type: DataTypes.STRING,
-            allowNull:false
         }
 });
 
