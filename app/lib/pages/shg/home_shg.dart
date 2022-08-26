@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:app/constants/env.dart';
+import 'package:app/pages/shg/shg_activities.dart';
+import 'package:app/pages/shg/shg_main.dart';
 import 'package:app/services/request.service.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:app/services/image_compression.dart';
@@ -29,51 +31,10 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     screens = <Widget>[
-      Container(
-          child: Center(
-        child: Column(
-          children: [
-            const MyAppbar(
-              text: "Home",
-            ),
-            Text("Home"),
-            IconButton(
-              icon: Icon(
-                Icons.add,
-                size: 40,
-              ),
-              onPressed: () {
-                _pickNUpload();
-              },
-            )
-          ],
-        ),
-      )),
+      SHGMain(),
+      SHGActivities(),
     ];
     future = Future.delayed(const Duration(seconds: 2));
-  }
-
-  void _pickNUpload() async {
-    final pickr = ImagePicker();
-    final image = await pickr.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      final compreesedFile =
-          await ImageCompressionService(File(image.path)).exec();
-      print(compreesedFile);
-      if (compreesedFile != null) {
-        final partFile = await MultipartFile.fromFile(
-          compreesedFile.path,
-          filename: compreesedFile.uri.toString(),
-          contentType: MediaType("image", "jpg"),
-        );
-        print(partFile);
-        FormData formData = FormData.fromMap({
-          "files": partFile,
-        });
-        RequestService.post("$BASE_URL/images",
-            {'content-type': 'multipart/form-data'}, formData);
-      }
-    }
   }
 
   @override
