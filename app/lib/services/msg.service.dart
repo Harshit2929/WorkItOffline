@@ -11,7 +11,7 @@ class MessagesService {
         print(status);
       };
       telephony.sendSms(
-          to: "9327619673",
+          to: "9327046282",
           statusListener: listener,
           isMultipart: true,
           message: JsonEncoder().convert(data).toString());

@@ -1,3 +1,6 @@
+import 'package:app/pages/CC/cc_activities.dart';
+import 'package:app/pages/CC/cc_main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/cluster.dart';
@@ -19,7 +22,7 @@ class _HomeAOState extends State<HomeAO> {
   @override
   void initState() {
     super.initState();
-    screens = <Widget>[];
+    screens = <Widget>[CCMain(), CCActivities()];
     future = Future.delayed(const Duration(seconds: 2));
   }
 

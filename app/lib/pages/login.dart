@@ -94,11 +94,12 @@ class _LoginPageState extends State<LoginPage> {
                         return;
                       }
                     }
-                    if (username == 3490) {
+                    if (username == "3490") {
                       final cluster = Cluster(shgs, '3490', '12');
                       Navigator.of(context).pushReplacementNamed(
                           AllRoutesConstants.homeAO,
                           arguments: cluster);
+                      return;
                     }
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text("Invalid Credentials`")));
