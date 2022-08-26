@@ -8,8 +8,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../models/shg.dart';
-import '../widgets/appbar.dart';
+import '../../models/shg.dart';
+import '../../widgets/appbar.dart';
 
 class HomePage extends StatefulWidget {
   final SHG shg;
