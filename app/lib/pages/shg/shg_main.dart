@@ -13,6 +13,8 @@ import 'package:image_picker/image_picker.dart';
 class SHGMain extends StatelessWidget {
   const SHGMain({Key? key}) : super(key: key);
 
+
+
   void _pickNUpload() async {
     final pickr = ImagePicker();
     final image = await pickr.pickImage(source: ImageSource.camera);
