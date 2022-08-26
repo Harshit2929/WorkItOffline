@@ -18,7 +18,7 @@ class DatabaseConstants {
 class DatabaseService {
   // Singleton
   static final DatabaseService databaseService =
-  DatabaseService._privateConstructor();
+      DatabaseService._privateConstructor();
 
   DatabaseService._privateConstructor();
 
@@ -30,7 +30,8 @@ class DatabaseService {
 
   Future<Database> _initDatabase() async {
     // Do all get requests
-    RequestService.get('$BASE_URL/activities/shg', {});
+    final req = await RequestService.get('$BASE_URL/activities/1', {});
+    print(req.data);
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, 'shg.db');
     return await openDatabase(path, onCreate: _onCreate, version: 1);

@@ -1,3 +1,4 @@
+import 'package:app/services/msg.service.dart';
 import 'package:flutter/material.dart';
 
 import '../../services/request.service.dart';
@@ -38,27 +39,45 @@ class SHGMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SafeArea(
       child: Container(
-          child: Center(
         child: Column(
           children: [
-            const MyAppbar(
-              text: "Home",
+            Stack(
+              children: [
+                const MyAppbar(
+                  text: "Home",
+                ),
+                Positioned(
+                  top: 150,
+                  left: MediaQuery.of(context).size.width / 2 - 50,
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    height: 200,
+                    decoration:
+                        const BoxDecoration(color: Colors.deepPurpleAccent),
+                    width: 150,
+                    child: Column(
+                      children: const [
+                        Text('Cluster Name : XYZ'),
+                        Text("Cluster Code : 123456"),
+                        Text("Raipur, Chhatishgarh"),
+                        Text("CC: ABC Person"),
+                      ],
+                    ),
+                  ),
+                )
+              ],
             ),
-            Text("Home"),
-            IconButton(
-              icon: Icon(
-                Icons.add,
-                size: 40,
-              ),
-              onPressed: () {
-                _pickNUpload();
-              },
-            )
+            Text("SMS SMS SMS"),
+            ElevatedButton(
+                onPressed: () {
+                  MessagesService().sendSMS({});
+                },
+                child: const Text("Send"))
           ],
         ),
-      )),
+      ),
     );
   }
 }

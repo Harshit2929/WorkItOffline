@@ -29,7 +29,10 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
                 child: DecoratedBox(
                   child: Column(
                     children: [
-                      const Text("Work it Offline"),
+                      const Text(
+                        "Work it Offline",
+                        style: TextStyle(color: Colors.white),
+                      ),
                       Text(text),
                       Text(subtext),
                     ],

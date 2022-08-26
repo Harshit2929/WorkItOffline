@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
           ),
           NavigationDestination(
             icon: Icon(Icons.list),
-            label: "Orders",
+            label: "Activities",
           ),
           // NavigationDestination(
           //   icon: Icon(Icons.money),
