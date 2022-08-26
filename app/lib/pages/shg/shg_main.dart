@@ -14,26 +14,33 @@ import 'package:image_picker/image_picker.dart';
 class SHGMain extends StatelessWidget {
   const SHGMain({Key? key}) : super(key: key);
 
-  void _pickNUpload() async {
-    final pickr = ImagePicker();
-    final image = await pickr.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      final compreesedFile =
-          await ImageCompressionService(File(image.path)).exec();
-      print(compreesedFile);
-      if (compreesedFile != null) {
-        final partFile = await MultipartFile.fromFile(
-          compreesedFile.path,
-          filename: compreesedFile.uri.toString(),
-          contentType: MediaType("image", "jpg"),
-        );
-        print(partFile);
-        FormData formData = FormData.fromMap({
-          "files": partFile,
-        });
-        RequestService.post("$BASE_URL/images",
-            {'content-type': 'multipart/form-data'}, formData);
+  void _pickNUpload(BuildContext contex) async {
+    try {
+      final pickr = ImagePicker();
+      final image = await pickr.pickImage(source: ImageSource.camera);
+      if (image != null) {
+        final compreesedFile =
+            await ImageCompressionService(File(image.path)).exec();
+        print(compreesedFile);
+        if (compreesedFile != null) {
+          final partFile = await MultipartFile.fromFile(
+            compreesedFile.path,
+            filename: compreesedFile.uri.toString(),
+            contentType: MediaType("image", "jpg"),
+          );
+          print(partFile);
+          FormData formData = FormData.fromMap({
+            "files": partFile,
+          });
+          final resp = await RequestService.post("$BASE_URL/images",
+              {'content-type': 'multipart/form-data'}, formData);
+          if (resp.statusCode == 200) ;
+          ScaffoldMessenger.of(contex)
+              .showSnackBar(SnackBar(content: Text("doNE")));
+        }
       }
+    } catch (e) {
+      print(e);
     }
   }
 
@@ -69,12 +76,16 @@ class SHGMain extends StatelessWidget {
                 )
               ],
             ),
-            Text("SMS SMS SMS"),
             ElevatedButton(
                 onPressed: () {
-                  MessagesService().sendSMS(dummySHGs[0].toMap());
+                  MessagesService().sendSMS(dummySHGs[0].toMap(), '9327046282');
                 },
-                child: const Text("Send"))
+                child: const Text("SMS Send Button")),
+            ElevatedButton(
+                onPressed: () {
+                  _pickNUpload(context);
+                },
+                child: Text("Image Test btn"))
           ],
         ),
       ),

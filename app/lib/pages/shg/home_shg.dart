@@ -89,14 +89,6 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.list),
             label: "Activities",
           ),
-          NavigationDestination(
-            icon: Icon(Icons.checklist_rounded),
-            label: "Member List",
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.chrome_reader_mode_rounded),
-            label: "Training",
-          ),
         ],
       ),
     );

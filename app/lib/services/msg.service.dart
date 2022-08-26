@@ -4,17 +4,17 @@ import 'dart:convert';
 class MessagesService {
   final Telephony telephony = Telephony.instance;
 
-  void sendSMS(Map<String, dynamic> data) async {
+  void sendSMS(Map<String, dynamic> data, String to) async {
     bool? permissionsGranted = await telephony.requestPhoneAndSmsPermissions;
     if (permissionsGranted ?? false) {
       final SmsSendStatusListener listener = (SendStatus status) {
         print(status);
       };
       telephony.sendSms(
-          to: "9327046282",
+          to: to,
           statusListener: listener,
           isMultipart: true,
-          message: JsonEncoder().convert(data).toString());
+          message: const JsonEncoder().convert(data).toString());
     }
   }
 }
