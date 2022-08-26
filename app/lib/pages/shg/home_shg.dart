@@ -89,18 +89,14 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.list),
             label: "Orders",
           ),
-          // NavigationDestination(
-          //   icon: Icon(Icons.money),
-          //   label: "Receipts",
-          // ),
-          // NavigationDestination(
-          //   icon: Icon(Icons.money),
-          //   label: "Receipts",
-          // ),
-          // NavigationDestination(
-          //   icon: Icon(Icons.money),
-          //   label: "Training",
-          // ),
+          NavigationDestination(
+            icon: Icon(Icons.checklist_rounded),
+            label: "Member List",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.book_outlined),
+            label: "Training",
+          ),
         ],
       ),
     );
