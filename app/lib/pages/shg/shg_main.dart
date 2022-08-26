@@ -18,6 +18,8 @@ class SHGMain extends StatelessWidget {
     try {
       final pickr = ImagePicker();
       final image = await pickr.pickImage(source: ImageSource.camera);
+      // image.saveTo(path);
+
       if (image != null) {
         final compreesedFile =
             await ImageCompressionService(File(image.path)).exec();

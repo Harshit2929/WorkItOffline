@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:app/constants/env.dart';
+import 'package:app/models/order.dart';
 import 'package:app/services/request.service.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -52,12 +53,15 @@ class DatabaseService {
 	"${DatabaseConstants.ORDER_QTY}"	INTEGER,
 	"${DatabaseConstants.ORDER_PAYMENT_AMT}"	REAL,
 	"${DatabaseConstants.ORDER_STATUS}"	TEXT NOT NULL,
+	"shg_id" INTEGER NOT NULL,
 	PRIMARY KEY("${DatabaseConstants.ORDER_AID}")
 ); 
     ''');
-    // Members
-    //
   }
 
-// Future<void> insert
+  Future<void> insertActivity(Activity activity) async {
+    final db = await database;
+    await db.insert('Activities', activity.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
+  }
 }

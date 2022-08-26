@@ -80,7 +80,7 @@ class CCActivities extends StatelessWidget {
                         title: title ?? "",
                         amt: payment ?? 0,
                         status: OrderStatus.inProgress);
-                    MessagesService().sendSMS(act.toMap(), '9457407502');
+                    MessagesService().sendSMS(act.toMap(), '8320429835');
                   },
                   child: Text('Submit')),
             ],

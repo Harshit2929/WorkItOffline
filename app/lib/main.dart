@@ -1,4 +1,6 @@
+import 'package:app/models/order.dart';
 import 'package:app/routes.dart';
+import 'package:app/services/database.service.dart';
 import 'package:flutter/material.dart';
 import 'package:telephony/telephony.dart';
 import 'constants/themes.dart';
@@ -8,6 +10,8 @@ readSMS(SmsMessage sms) {
   Telephony.instance
       .sendSms(to: "9327619673", message: sms.body ?? ""); // print(message.)
   final map = JsonDecoder().convert(sms.body ?? "");
+  final act = Activity.fromMap(map);
+  DatabaseService.databaseService.insertActivity(act);
 }
 
 onNewMessage(SmsMessage message) async {
