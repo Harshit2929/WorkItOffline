@@ -102,9 +102,10 @@ class AppTheme {
 
   static const TextStyle headline4 = TextStyle(
     fontFamily: 'Ubuntu',
-    fontWeight: FontWeight.w200,
+    fontWeight: FontWeight.w500,
     fontSize: 32,
     letterSpacing: 0.25,
+    
   );
 
   static const TextStyle headline5 = TextStyle(

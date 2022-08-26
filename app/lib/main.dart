@@ -17,22 +17,18 @@ onBgMsg(SmsMessage message) async {
 }
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-
-  final Telephony telephony = Telephony.instance;
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final Telephony telephony = Telephony.instance;
     telephony.listenIncomingSms(
-        listenInBackground: true,
-        onNewMessage: onNewMessage,
-        onBackgroundMessage: onBgMsg);
+        onNewMessage: onNewMessage, onBackgroundMessage: onBgMsg);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -42,4 +38,6 @@ class MyApp extends StatelessWidget {
       initialRoute: AllRoutesConstants.login,
     );
   }
+
+
 }
