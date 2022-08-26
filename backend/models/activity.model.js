@@ -1,12 +1,7 @@
 const { Sequelize, DataTypes, Model } = require('sequelize')
 let {connection} = require("./../imports")
 const Activity = connection.define("activity", {
-    aid:{
-        type: DataTypes.INTEGER,
-        autoincrement: true,
-        primarykey: true,
-        unique:true
-    },
+    
     title:{
         type:DataTypes.STRING,
         allowNull: false

@@ -10,7 +10,8 @@ exports.create = async(req, res) => {
 };
 exports.getAllActivities = async (req,res)=>{
     try{
-        const shg_id = req.params.shg;
+        const shg_id = req.params.shg_id;
+        
     const activities = await Activity.findAll({
         where: {
             shg_id: shg_id
@@ -18,7 +19,7 @@ exports.getAllActivities = async (req,res)=>{
     });
     res.json(activities);
     }catch(error){
-        res.status(400).send(error);
+        res.status(401).send(error);
     }   
     
 }

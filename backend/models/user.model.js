@@ -29,7 +29,8 @@ const User = connection.define("users", {
       },
     phone_number: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull:false,
+        unique:true
       }
       ,is_admin:{
         type:DataTypes.BOOLEAN,
@@ -42,9 +43,9 @@ const User = connection.define("users", {
 });
 
 
-( async function(){
-await User.sync({ alter: true })
-})()
+// ( async function(){
+// await User.sync({ alter: true })
+// })()
 // added some dummy data only once
 // (async function (){
 
