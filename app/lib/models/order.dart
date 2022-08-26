@@ -1,13 +1,14 @@
 enum OrderStatus { inProgress, done, paymentCleared }
 
-class Order {
-  final int oid, quantity;
+class Activity {
+  final int aid, quantity, shgId;
   final String title;
   final double amt;
   final OrderStatus status;
 
-  Order({
-    required this.oid,
+  Activity({
+    required this.shgId,
+    required this.aid,
     required this.quantity,
     required this.title,
     required this.amt,
@@ -16,7 +17,7 @@ class Order {
 
   Map<String, dynamic> toMap() {
     return {
-      'oid': oid,
+      'oid': aid,
       'title': title,
       'orderStatus': status.toString(),
       'amount': amt.toString(),
@@ -24,9 +25,10 @@ class Order {
     };
   }
 
-  factory Order.fromMap(Map<String, dynamic> data) {
-    return Order(
-      oid: data['oid']?.toInt(),
+  factory Activity.fromMap(Map<String, dynamic> data) {
+    return Activity(
+      shgId: data['shg_id'] ?? "",
+      aid: data['oid']?.toInt(),
       quantity: data['quantity']?.toInt() ?? 0,
       title: data['title'] ?? "",
       amt: data['amt']?.toDouble() ?? 0,
