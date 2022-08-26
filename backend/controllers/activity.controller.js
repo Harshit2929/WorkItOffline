@@ -1,21 +1,24 @@
 const Activity = require("./../models/activity.model");
-
+let isao = require("./../middlewares/isao.middlware");
 exports.create = async(req, res) => {
-    if(!req.body.title){
-        res.status(400).send({
-            message: "Content can not be empty!"
-        });
-    }
-    const newa=await Activity.create(req.body);
-    res.json(newa);
+    try{
+        const newa = await Activity.create(req.body);
+        res.json(newa);
+    }catch(error){
+        res.status(400).send(error);
+    }   
 };
-
-exports.findAll = async(req, res) => {
-    const shg_id = req.params.shg;
+exports.getAllActivities = async (req,res)=>{
+    try{
+        const shg_id = req.params.shg;
     const activities = await Activity.findAll({
         where: {
             shg_id: shg_id
         }
     });
     res.json(activities);
+    }catch(error){
+        res.status(400).send(error);
+    }   
+    
 }

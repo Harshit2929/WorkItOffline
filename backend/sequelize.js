@@ -8,17 +8,26 @@ const ShgModel = require("./models/shg.model");
 const TransactionModel = require("./models/transaction.model");
 const MeetingModel = require("./models/meeting.model");
 const MeetingUserModel = require("./models/meetingUser.model");
+<<<<<<< HEAD
 // const ActivityModel=require("./models/activity.model")
 const TrainingModel=require("./models/training.model")
+=======
+let ActivityModel = require("./models/activity.model");
+
+>>>>>>> 230afd4 (updated')
 
 const User = new UserModel(connection, DataTypes);
 const Shg = new ShgModel(connection, DataTypes);
 const Transaction = new TransactionModel(connection, DataTypes);
 const Meeting = new MeetingModel(connection, DataTypes);
 const MeetingUsers = new MeetingUserModel(connection, DataTypes);
+<<<<<<< HEAD
 // const Activity = new ActivityModel(connection, DataTypes);
 const Training=new TrainingModel(connection, DataTypes)
 
+=======
+const Activity = new ActivityModel(connection, DataTypes);
+>>>>>>> 230afd4 (updated')
 
 // Relations between different tables
 //one to many relationship between  Shg and User
@@ -46,6 +55,11 @@ let s = async () =>{
         await connection.authenticate();
         console.log('Connection has been established successfully.');
 
+<<<<<<< HEAD
+=======
+         
+
+>>>>>>> 230afd4 (updated')
         await connection.sync().then(()=>{
             console.log("TABLE ADDED")
         })
@@ -63,6 +77,11 @@ module.exports = {
     Meeting,
     Shg,
     MeetingUsers,
+<<<<<<< HEAD
     Transaction,
    Training
+=======
+    Transaction, 
+    Activity
+>>>>>>> 230afd4 (updated')
 }
