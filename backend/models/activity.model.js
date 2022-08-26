@@ -19,13 +19,13 @@ const Activity = connection.define("activity", {
         allowNull: false
     },
     is_completed:{
-        type:DataTypes.BOOLEAN, 
-        allowNull: false
+        type:DataTypes.BOOLEAN
+        // allowNull: false
     },
     is_paid:{
-        type:DataTypes.BOOLEAN, 
-        allowNull: false
-    },
+        type:DataTypes.BOOLEAN
+        // allowNull: false
+    }
 });
 
 // (async function (){

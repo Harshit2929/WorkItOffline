@@ -18,6 +18,7 @@ const twilioRoutes = require("./routes/twilio.route");
 
 app.use(express.json());
 
+app.use('/static',express.static('uploads'));
 /* Middlewares */
 app.use("/users", userRoutes);
 app.use("/transactions", transactionRoutes);

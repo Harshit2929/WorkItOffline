@@ -11,12 +11,16 @@ exports.create = async(req, res) => {
 };
 
 exports.findAll = async(req, res) => {
-    const tid = req.params.tid;
-    const activities = await Training.findAll({
-        where: {
-            tid:tid
-        }
-    });
+    const activities = await Training.findAll();
     res.json(activities);
 }
 
+
+exports.findByShg = async (req, res)=>{
+    let act = await Training.findAll({
+        where:{
+            shg_id:req.params.shg_id
+        }
+    });
+    res.json(act);
+}
