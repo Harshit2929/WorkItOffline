@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
         ),
       )),
     ];
+    future = Future.delayed(const Duration(seconds: 2));
   }
 
   void _pickNUpload() async {
@@ -73,7 +74,6 @@ class _HomePageState extends State<HomePage> {
             {'content-type': 'multipart/form-data'}, formData);
       }
     }
-    future = Future.delayed(const Duration(seconds: 2));
   }
 
   @override
