@@ -14,6 +14,7 @@ const transactionRoutes = require("./routes/transactions.route");
 const activityRoutes = require("./routes/activity.route");
 const imageRoutes = require("./routes/images.route");
 const trainingRoutes=require("./routes/training.route")
+const twilioRoutes = require("./routes/twilio.route");
 
 app.use(express.json());
 
@@ -23,6 +24,7 @@ app.use("/transactions", transactionRoutes);
 app.use("/activity", activityRoutes);
 app.use("/images", imageRoutes);
 app.use("/training", trainingRoutes);
+app.use("/twilio", twilioRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World");

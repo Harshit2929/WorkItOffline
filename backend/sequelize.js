@@ -10,6 +10,8 @@ const MeetingModel = require("./models/meeting.model");
 const MeetingUserModel = require("./models/meetingUser.model");
 // const ActivityModel=require("./models/activity.model")
 const TrainingModel=require("./models/training.model")
+let ActivityModel = require("./models/activity.model");
+
 
 const User = new UserModel(connection, DataTypes);
 const Shg = new ShgModel(connection, DataTypes);
@@ -19,7 +21,7 @@ const MeetingUsers = new MeetingUserModel(connection, DataTypes);
 // const Activity = new ActivityModel(connection, DataTypes);
 const Training=new TrainingModel(connection, DataTypes)
 
-
+const Activity = new ActivityModel(connection, DataTypes);
 // Relations between different tables
 //one to many relationship between  Shg and User
 
@@ -64,5 +66,6 @@ module.exports = {
     Shg,
     MeetingUsers,
     Transaction,
-   Training
+   Training,
+    Activity
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:app/constants/env.dart';
+import 'package:app/models/cluster.dart';
 import 'package:app/pages/orders.dart';
 import 'package:app/services/request.service.dart';
 import 'package:http_parser/http_parser.dart';
@@ -12,19 +13,18 @@ import 'package:image_picker/image_picker.dart';
 
 import '../models/shg.dart';
 
-class HomePage extends StatefulWidget {
-  final SHG shg;
+class AOHome extends StatefulWidget {
+  final Cluster cluster;
 
-  const HomePage({Key? key, required this.shg}) : super(key: key);
+  const AOHome({Key? key, required this.cluster}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AOHome> createState() => _AOHomeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AOHomeState extends State<AOHome> {
   int currentIndex = 0;
   late final List<Widget> screens;
-  late final Future future;
 
   @override
   void initState() {
@@ -77,43 +77,10 @@ class _HomePageState extends State<HomePage> {
             {'content-type': 'multipart/form-data'}, formData);
       }
     }
-    future = Future.delayed(const Duration(seconds: 2));
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      builder: builder,
-      future: future,
-    );
-  }
-
-  Widget _button(
-      IconData icon, String text, BuildContext context, String route) {
-    return Container(
-        padding: const EdgeInsets.all(20),
-        width: 50,
-        height: 50,
-        child: Container(
-          color: Colors.pink,
-          child: IconButton(
-            color: Colors.white,
-            onPressed: () {
-              Navigator.pushNamed(context, route);
-            },
-            icon: Icon(icon),
-          ),
-        ));
-  }
-
-  Widget builder(BuildContext context, AsyncSnapshot snapshot) {
-    if (snapshot.connectionState == ConnectionState.waiting) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: NavigationBar(
@@ -147,5 +114,23 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  Widget _button(
+      IconData icon, String text, BuildContext context, String route) {
+    return Container(
+        padding: const EdgeInsets.all(20),
+        width: 50,
+        height: 50,
+        child: Container(
+          color: Colors.pink,
+          child: IconButton(
+            color: Colors.white,
+            onPressed: () {
+              Navigator.pushNamed(context, route);
+            },
+            icon: Icon(icon),
+          ),
+        ));
   }
 }

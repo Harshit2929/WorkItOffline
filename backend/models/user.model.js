@@ -47,26 +47,12 @@ await User.sync({ alter: true })
 })()
 // added some dummy data only once
 // (async function (){
-// const user1=await User.update({ shg_id:2 }, {
-//     where: {
-//       uid:7
-//     }
-//   });
-//   const user3=await User.update({ shg_id:2 }, {
-//     where: {
-//       uid:8
-//     }
-//   });
-//   const user2=await User.update({ shg_id:2 }, {
-//     where: {
-//       uid:9
-//     }
-//   });
-// // const user2=await User.create({ uid: 12, shg_id:2,firstName: "ddbjsbchjds", lastName: "sdchddcs", fatherName: "cjdskcn", husbandName: "sdfcsdb",is_admin:true,is_ao:false, phone_number: 999569569})
-// // const user3=await User.create({ uid: 13, shg_id:3,firstName: "asjdcnds", lastName: "sdbndscdd", fatherName: "chdksjc", husbandName: "sanjnc",is_admin:false, is_ao:true,phone_number: 945999119})
 
-// //  console.log(user1.firstName)
-// //  console.log(user2.lastName)
+// const user2=await User.create({ uid: 1, shg_id:2,firstName: "ddbjsbchjds", lastName: "sdchddcs", fatherName: "cjdskcn", husbandName: "sdfcsdb",is_admin:true,is_ao:false, phone_number: 999569569})
+// const user3=await User.create({ uid: 13, shg_id:3,firstName: "asjdcnds", lastName: "sdbndscdd", fatherName: "chdksjc", husbandName: "sanjnc",is_admin:false, is_ao:true,phone_number: 945999119})
+
+// //  console.log(user2.firstName)
+// //  console.log(user3.firstName)
 //  })()
 
 module.exports = User

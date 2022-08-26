@@ -1,4 +1,7 @@
+import 'package:app/models/cluster.dart';
 import 'package:app/models/member.dart';
+import 'package:app/models/shg.dart';
+import 'package:app/pages/ao_home.dart';
 import 'package:app/pages/home.dart';
 import 'package:app/pages/init_page.dart';
 import 'package:app/pages/meeting_attendance.dart';
@@ -14,7 +17,17 @@ Route? onGenerateRoute(RouteSettings settings) {
     case AllRoutesConstants.login:
       return MaterialPageRoute(builder: (_) => LoginPage());
     case AllRoutesConstants.home:
-      return MaterialPageRoute(builder: (_) => HomePage());
+      final shg = settings.arguments as SHG;
+      return MaterialPageRoute(
+          builder: (_) => HomePage(
+                shg: shg,
+              ));
+    case AllRoutesConstants.aoHome:
+      final cluster = settings.arguments as Cluster;
+      return MaterialPageRoute(
+          builder: (_) => AOHome(
+                cluster: cluster,
+              ));
     case AllRoutesConstants.newMeeting:
       return MaterialPageRoute(builder: (_) => NewMeeting());
     case AllRoutesConstants.newMeetingAttendance:
@@ -33,4 +46,6 @@ class AllRoutesConstants {
   static const newMeeting = 'newMeeting';
   static const records = 'records';
   static const newMeetingAttendance = 'new_meeting_attendance';
+
+  static const aoHome = 'aoHome';
 }
